@@ -2,10 +2,11 @@
 var debug = require('debug')('chatsocketio');
 var app = require('../app');
 //var io1 = require('../iofol/iofile');
-app.set('port', process.env.PORT || 5000);
+app.set('port', 5500);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + server.address().port);
+  console.log("listening")
 });
 //io1.listen(server);
 var io = require('socket.io').listen(server);
