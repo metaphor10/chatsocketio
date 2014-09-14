@@ -1,6 +1,6 @@
 var socket = io.connect();
-function addMessage(msg, pseudo) {
-    $("#chatEntries").append('<div class="message"><p>' + pseudo + ' : ' + msg + '</p></div>');
+function addMessage(msg, pseudo, time) {
+    $("#chatEntries").append('<div class="message"><p>' + pseudo + ' : ' + msg + '   '+ time +'</p></div>');
 }
 function sentMessage() {
     if ($('#messageInput').val() != "")
@@ -20,7 +20,7 @@ function setPseudo() {
     }
 }
 socket.on('message', function(data) {
-    addMessage(data['message'], data['pseudo']);
+    addMessage(data['message'], data['pseudo'], data['time']);
 });
 $(function() {
     $("#chatControls").hide();
